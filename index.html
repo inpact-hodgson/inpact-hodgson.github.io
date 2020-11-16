@@ -1,39 +1,363 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
 
-<html lang="en">
 <head>
-  <meta charset="utf-8">
 
-  <title>Inpact Workflow</title>
-  <meta name="description" content="Inpact Workflow">
-  <meta name="author" content="Inpact">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>workflow</title>
 
-  <link rel="stylesheet" href="css/styles.css">
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+  body {
+    padding: 2cm; 
+  }
+}
+</style>
+
 
 </head>
 
 <body>
 
+<p><img src="https://inpact.ne.jp/hodgson/img/inpact-logo.png" alt="Inpact logo"></p>
 
-  <p><img src="https://inpact.ne.jp/hodgson/img/inpact-logo.png" alt="Inpact logo"></p>
-
-<h1 id="toc_0">案件流れ</h1>
-
-<p><img src="https://inpact.ne.jp/hodgson/img/workflow.png" alt="Workflow"></p>
+<h1 id="toc_0">ワークフロー</h1>
 
 <p>このガイドが以下の３点の目的としています：</p>
 
 <ul>
 <li>明確な道を提供します</li>
 <li>役割を明確にする</li>
-<li>必要なチェックリストを提供する</li>
+<li>必要な書類やチェックリストを提供する</li>
 </ul>
 
-<p><span style="color:blue; font-size:21px;"><strong>- 1週目 -</strong></span>  </p>
+<p>定義されたワークフローは、チームがスコープ、レビュー担当者、ツール、および各ステップで実行される定義を相互に理解するのに役立ちます。<br>
+ワークフローにより、コラボレーションが強化され、配信が迅速化され、チームは製品が好む機能を予測どおりに提供します。</p>
+
+<p><img src="https://inpact.ne.jp/hodgson/img/workflow.png" alt="Workflow">
+<img src="https://inpact.ne.jp/hodgson/img/5stepworkflow.png" alt="Workflow Steps">
+<img src="https://inpact.ne.jp/hodgson/img/sequentialsteps.png" alt="Sequential Steps"></p>
+
+<p><span style="color:blue; font-size:21px;"><strong>- １週目 -</strong></span>  </p>
 
 <h2 id="toc_1">ヒアリング（最初の会議）<span style="background-color:maroon; color:white; padding:3px 6px; font-size:10px;">お客様と制作チーム</span></h2>
 
 <p>先方様との最初の会話で<a href="#debrief"><strong>提案書</strong></a>を用意し、また<a href="#hearing-checklist"><strong>ヒアリングチェックリスト</strong></a>が可能な限り記入してください。  </p>
+
+<p><strong>The Briefing</strong><br>
+Whether it’s a formal Request For Quotation (RFQ), a statement of requirements, or just a detailed email, everything starts with the initial brief you give to your web agency. At a minimum, you should describe what you want, the “feature requirements”; why you want it, the “business requirements”; and when you need it to be done by.</p>
 
 <ul>
 <li>Add Meeting minutes as well (recorded?)<br></li>
@@ -45,11 +369,16 @@
 
 <h2 id="toc_2">企画</h2>
 
-<h3 id="toc_3">ニーズ評価</h3>
+<h3 id="toc_3">ニーズ・要件の評価</h3>
 
 <h4 id="toc_4">評価 <span style="background-color:red; color:white; padding:3px 6px; font-size:10px;">制作チーム</span></h4>
 
 <p>最初の会議の後、プロジェクトの要件を決定します。</p>
+
+<p><strong>Requirements analysis</strong><br>
+After the initial discussion of the brief, it’s fairly typical for the web agency to prepare follow-up questions and presentations designed to clarify their understanding of your needs. This is an important step in projects of any size. It is always best to discover any missed or misinterpreted requirements as early as possible. Simpler projects may be confirmed via a basic phone call, while more complex projects may require a number of workshops involving key personnel to fully capture all requirements.</p>
+
+<p>Regardless of the size of your project, the more input you can provide at this stage, the more effective your return on investment will be for the overall project, and the lower the overall risk of a hidden obstacle throwing your project into disarray.</p>
 
 <ul>
 <li>assume target audience</li>
@@ -73,11 +402,24 @@
 </ol></li>
 </ul>
 
+<p><strong>Scope definition and proposal</strong><br>
+Having come to understand your requirements, the agency will provide a contract – Statement of Work or some other document – that clearly outlines what they will deliver in exchange for your money. In a waterfall context, you should expect to see a list of deliverables that address each of your requirements to be included “in scope”. In an agile context, your developer may define these at the start of each sprint with the overall “scope” of the project much more open-ended.</p>
+
+<p>The true mark of a professional web agency is the inclusion of documentation regarding:</p>
+
+<p>“exclusions”, things the developer explicitly won’t deliver
+“assumptions”, which show why they came up with their approach
+“risks”, which provide transparency around known risk factors.If you don’t get these assessments, ask for them so you can closely review and provide corrections or raise concerns if anything does not line up with your vision for the project.
+Estimating and scheduling
+By this stage, you’ll no doubt be quite keen to understand how much your project will cost, and how long it will take. The preceding activities will give your developer enough context to provide estimates on each feature. In an agile project, this may occur at the start of each sprint, while a waterfall approach will result in a broader project-level estimate alongside a complete statement of work and vendor agreement.</p>
+
+<p>Depending on how complex your requirements are, it is not uncommon for these estimates to be further refined throughout the design and development phases of the project, as the understanding of the project grows or if requirements change. At which point any changes are signed off on by both parties and documented (provide link to documentation).</p>
+
 <h4 id="toc_5">レビュー <span style="background-color: black; color:white; padding:3px 6px; font-size:10px;">お客様</span></h4>
 
 <p>プロジェクトの要件が先方様と確認して、修正してます。</p>
 
-<p><span style="color:blue; font-size:21px;"><strong>- 2週目 -</strong></span>  </p>
+<p><span style="color:blue; font-size:21px;"><strong>- ２週目 -</strong></span>  </p>
 
 <h3 id="toc_6">リサーチ <span style="background-color: red; color:white; padding:3px 6px; font-size:10px;">制作チーム</span></h3>
 
@@ -91,6 +433,8 @@
 <li>propose an updated budget (provide quote) and timeline</li>
 <li>determine domain / server / mail server / new mail accounts needed</li>
 </ul>
+
+<p>新サーバー購入・メールアドレス登録 (mail server migration or settings - manual for customers whether POP or IMAP) / Obtain necessary info for EC such as shipping address, name, phone, email and provide manual for setting up bank info.</p>
 
 <h3 id="toc_7">サイト概要とサイトマップ</h3>
 
@@ -137,7 +481,7 @@
 
 <p>アウトラインとサイトマップが先方様と確認して、修正してます。</p>
 
-<p><span style="color:blue; font-size:21px;"><strong>- 3週目 -</strong></span>  </p>
+<p><span style="color:blue; font-size:21px;"><strong>- ３週目 -</strong></span>  </p>
 
 <h3 id="toc_10">ワイヤーフレーム</h3>
 
@@ -154,15 +498,153 @@
 
 <p>ワイヤーが先方様と確認して、修正してます。</p>
 
+<h3 id="toc_13">コンテンツ</h3>
+
+<p>Creation of text contents and planning of photo shoot – including storyboarding for any videos. Outsourced writers and cameramen are likely to be used for higher budget projects. Lower budget projects will utilize in-house talents. Set necessary deadlines and milestones for content creation and delivery. At this point SEO is also taken into account when writing content. Interviews or voice overs also should be recorded.</p>
+
+<p><span style="color:blue; font-size:21px;"><strong>- ４〜５週目 -</strong></span>  </p>
+
+<h2 id="toc_14">デザイン</h2>
+
+<p>A design guideline and component library are to be created and linked to confluence. Any edits to design or components after launch are documented with date of update.</p>
+
+<h3 id="toc_15">Top Page, Inner Pages, Landing Pages <span style="background-color:red; color:white; padding:3px 6px; font-size:10px;">制作チーム</span></h3>
+
+<p>At first, PC and SP variations are created for top page and one inner page. Ref sites and visual hierarchy set to prioritize most important elements. Breakpoints set from smallest wireframe and expanding until too much whitespace or design break…<br>
+Touch targets should be 44px sq with another 22px (min) around the targets. Don’t count on hovers, think of it as an app for usability without refreshing. Avoid large graphics and videos. Test on actual devices.</p>
+
+<h4 id="toc_16">レビュー <span style="background-color: black; color:white; padding:3px 6px; font-size:10px;">お客様</span></h4>
+
+<p>デザインが先方様と確認して、修正してます。</p>
+
+<h3 id="toc_17">Creation of remaining pages and components</h3>
+
+<h4 id="toc_18">Use cases and user story definition</h4>
+
+<p>A use case is how your website visitors will perform set tasks on your website from start to finish. User stories are descriptions of website features from a visitor’s point of view, showcasing how it will meet its objective. Detailed use cases and user stories help to refine the understanding of what is required and what will be delivered. They focus on how each type of end-user will interact with the website.</p>
+
+<p>This level of detail gives your developer information to more accurately estimate the effort and delivery schedule of your project. It also provides framework for User Acceptance Testing in Phase 4. This does overlap somewhat with certain website design activities, but is also immensely useful for technical design.</p>
+
+<h4 id="toc_19">Revised estimating and scheduling (If necessary for complex projects)</h4>
+
+<p>Armed with comprehensive designs and blueprints from this phase, your developer will have a much clearer concept of the effort involved in developing each component of your website. Now is a great time to ask for an updated estimate and schedule. For more complex projects, you should also get a revised set of risks, assumptions, inclusions, and exclusions.</p>
+
+<h3 id="toc_20">Post-production video editing</h3>
+
+<p>Create WEB ready video files in mp4. Compress to 720p Twitter sizing in order to assist with site speed.</p>
+
+<p><span style="color:blue; font-size:21px;"><strong>- ６〜８週目 -</strong></span>  </p>
+
+<h2 id="toc_21">開発</h2>
+
+<p>On a test server, start developing the new (or to be renewed) site.<br>
+First pull then push any edits via git.<br>
+In GitHub, manager controls merge and release updates.</p>
+
+<p>(Create and link to coding rules documentation based on Arimura’s template and Shopify, include any SASS etc. SP as a base for CSS with styling for computer??? Or look at how it is done on Shopify… Also link to Atomic coding.)</p>
+
+<p>Add code to 768~1024 range to quick fix for that uncommonly used range.</p>
+
+<h3 id="toc_22">Frontend</h3>
+
+<p>Frontend developers are responsible for building the interactive parts of your site. In other words, they take the visual design and makes it a fully functioning reality. They produce what the website will look like to normal visitors arriving on your site. This is a specialised discipline, which requires in-depth knowledge and understanding of Web Accessibility standards such as WCAG, ARIA, CSS and HTML, device and browser capabilities, and website profiling and performance tools. Websites that don’t have complex integrations or requirements may only need the services of a frontend developer.</p>
+
+<h3 id="toc_23">Backend</h3>
+
+<p>Backend developers specialise in building custom data models, process automation, perform integrations with other information systems, and any other business logic that supports the operations of the website and the services it offers. Basically everything you DON’T see when you look at a website, but that should tick along effortlessly behind the scenes .Typically, a backend developer is well versed in:</p>
+
+<ul>
+<li>Scripting languages including PHP or NET<br></li>
+<li>Remote systems integrations protocols such as REST, SOAP, and GraphQL <a href="https://graphql.org/">https://graphql.org/</a><br></li>
+<li>Database query languages like SQL<br></li>
+<li>Content Management Systems (CMS’s) such as WordPress or Drupal.</li>
+</ul>
+
+<p>The list of acronyms could be as long as this article. Suffice it to say that to build a modern website that makes the final product look easy and seamless often takes a ton of work behind the scenes.</p>
+
+<h3 id="toc_24">Data migration</h3>
+
+<p>This may not be your first rodeo. If you have an existing website or web services, then you’re probably going to need all of the existing information transferred to the new and improved website. Data migration can sometimes be as easy as having someone draw the short straw and spend a few hours, or days, copying and pasting content, images, and resources from the old site to the new site.</p>
+
+<p>If you have far too much information for this to be feasible, perhaps an eCommerce site with thousands of products, then you can use automated migration to streamline this migration. This process can take anywhere from a few hours to several weeks, depending on how similar the new website’s data models are to your original website, how much information has to be migrated, and whether it’s done by your staff or the web development agency.</p>
+
+<h3 id="toc_25">Content production and entry / population</h3>
+
+<p>A new website with a new design tends to require new content, or a rethinking of how old content is structured.It is quite common for some web development agencies to take a hands-off approach to content. Essentially they will build your website but leave the content management up to you, which can be quite daunting for many companies. Other web development companies, including us here at Living Online, offer a range of content production and copywriting services if required.</p>
+
+<p>Developing new content for your site gives you the chance to make sure this content is written with two end goals: to improve your website’s SEO, and to convince your website visitors to take action and become customers. A full-service digital marketing and web development agency like Living Online is a prime choice to ensure the content you are uploading to your new website contributes towards your overall ROI. It’s always worth checking whether or not your developer’s estimates include any content production.</p>
+
+<h3 id="toc_26">DevOps configuration</h3>
+
+<p>DevOps, short for “development operations”, refers to a wide range of process automation, systems administration tasks, and other activities that overall serve to make the development process run more smoothly. For example, a DevOps engineer may put in place systems that more effectively manage how developers access and update your website’s source code, or configure automatic deployment of new website features to your testing, staging, and production (live) servers. A dedicated DevOps track may not be required on small and simple projects. On larger projects with multiple developers, however, the benefits quickly stack up.</p>
+
+<h3 id="toc_27">Testing</h3>
+
+<h4 id="toc_28">Validation</h4>
+
+<h4 id="toc_29">Cross Platform &amp; Browser Testing</h4>
+
+<h4 id="toc_30">QA testing</h4>
+
+<p>Before a developer passes a new feature over to you for testing, they will often have another member of their team perform a dry run of the user acceptance tests. This process is called quality assurance, or QA, testing. For the frontend of your website, this can include everything you would see, such as making sure links and buttons click through to the right area; that all page elements look great across all devices and browsers; and that all forms and eCommerce functionality work as expected.</p>
+
+<p>In the backend, this could mean a code review to catch any mistakes and potential issues before they end up being published on your live site. On smaller projects with smaller budgets, you might combine QA testing with user acceptance testing (see below), and take on the testing responsibility yourself.</p>
+
+<h4 id="toc_31">User acceptance testing (UAT) and remediation</h4>
+
+<p>You and your team play the pivotal role in this step of the process, as you are essentially signing off on the successful delivery of the features you have paid for. During the requirements gathering phase, when a project is broken down into use-cases, each of the desired features will include “acceptance criteria”. Acceptance criteria is just a fancy name for a checklist of steps or conditions a feature must pass in order to be considered complete. Once everything is checked off the list successfully, the feature is ready to go.</p>
+
+<p>If any of the UAT tests fail, your feedback is essential so that the developers can rectify the issues and resubmit for testing. Note that larger projects typically have a budget for remediation.</p>
+
+<h4 id="toc_32">Performance testing and improvements</h4>
+
+<p>Before your new website goes live, you should ensure there is allocation in the project to stress test it. This step should push a website to its limits, allowing you to determine if it’s able to meet the expected demands of your customer base. This is mainly relevant to websites that expect large volumes of traffic. It will make sure that your prospective customers can still access it and complete their required actions no matter how many other people are on the site.</p>
+
+<p>Performance improvements can be time-consuming and expensive if the end goal is unclear, so rather than just saying “make it faster”, be precise and data-driven in your requirements from the start. For example, “It must serve an average of 100 users per minute but accommodate a spike of 10,000 users an hour once per month. Average response time on a typical landing page should be 500ms even under maximum load.” If you’re unsure about these figures, talk to your website development agency.</p>
+
+<p>Software like Google Analytics, which shows minimum and maximum website traffic numbers over time, can help provide insights into what your performance levels should be. The clearer your expectations around performance, the easier it is for web developers to engineer an overall solution that will hit your targets.</p>
+
+<h3 id="toc_33">Final Review</h3>
+
+<p>Internal review and approval / お客様レビュー・修正</p>
+
+<p><span style="color:blue; font-size:21px;"><strong>- 9週目 -</strong></span>  </p>
+
+<h2 id="toc_34">公開</h2>
+
+<p>Your features have been built, tested, and accepted. Your marketing team is ready to pull the trigger on a huge campaign to advertise your new website to your audience. Before you give the go-ahead to push the big red button, make sure that your developer has provided a launch plan prior to and immediately after going live.</p>
+
+<p>A launch plan should include steps that mitigate the risk of data loss, reduce the overall time your website needs to be offline, and an exit strategy that lets you get your original website back in place, if you have one, should anything go off the rails. It should also test key conversion points such as forms and eCommerce abilities, as well as SEO performance to prevent any loss to existing online performance.</p>
+
+<p>Unfortunately, one of the main reasons we receive requests for help at Living Online is when a company has just had their new website launched by another agency, and all of a sudden, their SEO has tanked and they have dropped off the face of Google. This is incredibly costly, and is easily prevented by with a pre- and post-launch SEO audit to checks redirect, canonicals, meta directives, and other technical elements that come naturally for an agency with SEO on the mind.</p>
+
+<h3 id="toc_35">アナリティクス and Search Engine Submission</h3>
+
+<p>(Add Analytics and Console with goals for reports / remove our and customers IPs)<br>
+<a href="https://devchecklists.com/production-launch-checklist/">https://devchecklists.com/production-launch-checklist/</a><br>
+Add project to our own site works</p>
+
+<h3 id="toc_36">Publish and Promote</h3>
+
+<p>・リンク確認・テスト購入・修正</p>
+
+<h4 id="toc_37">Google Ads / Youtube / Press Release etc</h4>
+
+<p>Measure / TRACK &amp; MONITOR / REPORTS<br>
+… REPEAT</p>
+
+<h2 id="toc_38">アフターサービス / Support and Maintenance</h2>
+
+<p>Your new site has successfully launched, but that’s not the end of the road. There are some follow-on activities you need to consider:</p>
+
+<p>Core upgrades and patching – it is important in today’s world of privacy and security concerns to always keep your website’s codebase fully updated.
+Incremental improvements – often in the rush to meet deadlines, certain requirements don’t make the cut for launch. These can always be introduced more gradually after your website has launched.
+Hotfixes and troubleshooting – while a solid QA and testing process greatly reduces the risk of post-launch issues, websites are complex beasts and you should always make sure your developer has processes in place for managing and prioritising critical issues as they arise.
+The amount of post-launch support and maintenance is generally difficult to quantify in advance. Your developer should propose an approach to dealing with these factors, whether by way of a support retainer, warranty period, service subscription, or something else.</p>
 
 
 
 
-
-
-
-
-
-  <script src="js/scripts.js"></script>
 </body>
+
 </html>
